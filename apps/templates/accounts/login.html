@@ -35,7 +35,7 @@
             </div>
             <div class="card-body">
               <form role="form" method="post" action="" class="text-start">
-
+                {{ form.csrf_token }}
                 {{ form.hidden_tag() }} 
 
                 <div class="input-group input-group-outline mb-3">

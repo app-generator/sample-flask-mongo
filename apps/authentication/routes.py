@@ -15,7 +15,7 @@ from apps.authentication import blueprint
 from apps.authentication.forms import LoginForm, CreateAccountForm
 from apps.authentication.models import Users
 
-from apps.authentication.util import verify_pass
+from apps.authentication.util import verify_pass,hash_pass
 
 
 @blueprint.route('/')
@@ -35,7 +35,7 @@ def login():
         password = request.form['password']
 
         # Locate user
-        user = Users.query.filter_by(username=username).first()
+        user = Users.objects(username=username).first()
 
         # Check the password
         if user and verify_pass(password, user.password):
@@ -56,14 +56,15 @@ def login():
 
 @blueprint.route('/register', methods=['GET', 'POST'])
 def register():
-    create_account_form = CreateAccountForm(request.form)
+    create_account_form = CreateAccountForm(request.form,instance=Users())
     if 'register' in request.form:
 
         username = request.form['username']
         email = request.form['email']
+        password = request.form['password']
 
         # Check usename exists
-        user = Users.query.filter_by(username=username).first()
+        user = Users.objects(username=username).first()
         if user:
             return render_template('accounts/register.html',
                                    msg='Username already registered',
@@ -71,7 +72,7 @@ def register():
                                    form=create_account_form)
 
         # Check email exists
-        user = Users.query.filter_by(email=email).first()
+        user = Users.objects(email=email).first()
         if user:
             return render_template('accounts/register.html',
                                    msg='Email already registered',
@@ -79,9 +80,8 @@ def register():
                                    form=create_account_form)
 
         # else we can create the user
-        user = Users(**request.form)
-        db.session.add(user)
-        db.session.commit()
+        user = Users(username=username,email=email,password=hash_pass(password=password))
+        user.save()
         
         # Delete user from session
         logout_user()        

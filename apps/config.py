@@ -13,8 +13,14 @@ class Config(object):
     # SECRET_KEY = config('SECRET_KEY'  , default='S#perS3crEt_007')
     SECRET_KEY = os.getenv('SECRET_KEY', 'S#perS3crEt_007')
 
+    # MongoDB Config
+    MONGODB_SETTINGS = {
+        'PORT':27017,
+        'host': os.getenv('MONGO_HOST','localhost'),
+        'DB':os.getenv('MONGO_DB','materialkit-flask')
+    }
+
     # This will create a file in <app> FOLDER
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
     SQLALCHEMY_TRACK_MODIFICATIONS = False 
 
     # Assets Management
