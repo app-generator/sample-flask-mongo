@@ -34,6 +34,7 @@ On successful installation create a database.
 MONGO_DB=<mongo_database_name>
 MONGO_HOST=localhost
 ```
+
 ### **Atlas MongoDB Setup**
 
 
@@ -60,6 +61,7 @@ MONGO_HOST=mongodb+srv://<username>:<password>@<your_cluster>.mongodb.net/<mongo
 ```
 
 ## Getting Started
+
  **Step 1** - Download the code from the Github repository (using `git` command). 
 
  It comes preinstalled in Unix and Mac.<br>
@@ -98,6 +100,7 @@ C:\> env\Scripts\activate
 ```
 
 ### Runing the Project
+
 Having followed all the previous steps its time to run the application.<br>
 To run the project all you need to do is run the command on your terminal or CMD
 
