@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.1] 2022-12-11
+### Changes
+
+- Update DOCS
+  - Added [README_mongo](https://github.com/app-generator/sample-flask-mongo/blob/master/README_mongo.md)
+
 ## [1.0.0] 2022-12-06
 ### STABLE_Version
 
