@@ -11,6 +11,7 @@
 
 - ✅ `Up-to-date dependencies`
 - ✅ Persistence: `Mongo`
+  - learn [how to set up Mongo & Flask](./README_mongo.md) 
 - ✅ DB Tools: `Flask-MongoEngine`
 - ✅ Session-Based authentication (via **flask_login**), Forms validation
 
